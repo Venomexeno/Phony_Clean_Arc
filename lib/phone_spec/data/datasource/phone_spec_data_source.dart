@@ -13,9 +13,7 @@ class PhoneSpecDataSource extends BasePhoneSpecDataSource {
   Future<PhoneSpecModel> getPhoneSpec() async {
     final response = await Dio().get(ApiConstance.phoneSpec);
     if (response.statusCode == 200) {
-      return PhoneSpecModel.fromJson(response.data["data"].map(
-        (e) => PhoneSpecModel.fromJson(e),
-      ));
+      return PhoneSpecModel.fromJson(response.data["data"]);
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

@@ -16,7 +16,8 @@ class PhoneSpecModel extends PhoneSpec {
     return PhoneSpecModel(
       phoneName: json["phone_name"],
       thumbnail: json["thumbnail"],
-      phoneImages: json["phone_images"] as List<String>,
+      phoneImages:
+          List<String>.from(json["phone_images"].map((photos) => photos)),
       specifications: specificationsList,
     );
   }
@@ -34,7 +35,7 @@ class SpecificationsModel extends Specifications {
         list.map((specs) => SpecsModel.fromJson(specs)).toList();
     return SpecificationsModel(
       title: json["title"],
-      specs: json["specs"],
+      specs: specsList,
     );
   }
 }
