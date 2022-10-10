@@ -1,16 +1,16 @@
 import 'package:clean_arc_phony/core/error/exceptions.dart';
 import 'package:clean_arc_phony/core/network/api_constance.dart';
 import 'package:clean_arc_phony/core/network/error_message_model.dart';
-import 'package:clean_arc_phony/top_by_fans_devices/data/models/top_by_fans_phone_thumbnail_model.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/data/models/top_by_fans_device_thumbnail_model.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/data/models/top_by_fans_devices_model.dart';
-import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/top_by_fans_phone_thumbnail_usecase.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_device_thumbnail_usecase.dart';
 import 'package:dio/dio.dart';
 
 abstract class BaseTopByFansDevicesRemoteDataSource {
   Future<List<TopByFansDevicesModel>> getTopByFansDevices();
 
-  Future<TopByFansPhoneThumbnailModel> getTopByFansPhoneThumbnail(
-      TopByFansPhoneThumbnailParameter parameters);
+  Future<TopByFansDeviceThumbnailModel> getTopByFansDeviceThumbnail(
+      TopByFansDeviceThumbnailParameter parameters);
 }
 
 class TopByFansDevicesRemoteDataSource
@@ -32,12 +32,12 @@ class TopByFansDevicesRemoteDataSource
   }
 
   @override
-  Future<TopByFansPhoneThumbnailModel> getTopByFansPhoneThumbnail(
-      TopByFansPhoneThumbnailParameter parameters) async {
+  Future<TopByFansDeviceThumbnailModel> getTopByFansDeviceThumbnail(
+      TopByFansDeviceThumbnailParameter parameters) async {
     final response =
-        await Dio().get(ApiConstance.phoneThumbnailPath(parameters));
+        await Dio().get(ApiConstance.deviceThumbnailPath(parameters));
     if (response.statusCode == 200) {
-      return TopByFansPhoneThumbnailModel.fromJson(response.data["data"]);
+      return TopByFansDeviceThumbnailModel.fromJson(response.data["data"]);
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

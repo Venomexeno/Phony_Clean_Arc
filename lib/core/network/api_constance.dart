@@ -7,7 +7,7 @@ class ApiConstance {
   static const topByInterestDevicesPath = "$baseUrl/top-by-interest/";
   static const topByFansDevicesPath = "$baseUrl/top-by-fans/";
 
-  static phoneSpecPath(slug) => "$baseUrl/$slug";
+  static deviceSpecPath(slug) => "$baseUrl/$slug";
 
-  static phoneThumbnailPath(slug) => "$baseUrl/$slug";
+  static deviceThumbnailPath(slug) => "$baseUrl/$slug";
 }

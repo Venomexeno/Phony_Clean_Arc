@@ -2,7 +2,7 @@ import 'package:clean_arc_phony/Latest_devices/domain/entities/latest_devices.da
 
 class LatestDevicesModel extends LatestDevices {
   const LatestDevicesModel({
-    required super.phoneName,
+    required super.deviceName,
     required super.slug,
     required super.image,
     required super.detail,
@@ -10,7 +10,7 @@ class LatestDevicesModel extends LatestDevices {
 
   factory LatestDevicesModel.fromJson(Map<String, dynamic> json) =>
       LatestDevicesModel(
-        phoneName: json["phone_name"]!,
+        deviceName: json["phone_name"]!,
         slug: json["slug"]!,
         image: json["image"]!,
         detail: json["detail"]!,

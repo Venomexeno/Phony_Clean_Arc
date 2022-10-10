@@ -1,13 +1,13 @@
 import 'package:equatable/equatable.dart';
 
 class TopByInterestDevices extends Equatable {
-  final String phoneName;
+  final String deviceName;
   final String slug;
   final int hits;
   final String detail;
 
   const TopByInterestDevices({
-    required this.phoneName,
+    required this.deviceName,
     required this.slug,
     required this.hits,
     required this.detail,
@@ -15,7 +15,7 @@ class TopByInterestDevices extends Equatable {
 
   @override
   List<Object> get props => [
-        phoneName,
+    deviceName,
         slug,
         hits,
         detail,

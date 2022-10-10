@@ -2,7 +2,7 @@ import 'package:clean_arc_phony/top_by_fans_devices/domain/entities/top_by_fans_
 
 class TopByFansDevicesModel extends TopByFansDevices {
   const TopByFansDevicesModel({
-    required super.phoneName,
+    required super.deviceName,
     required super.slug,
     required super.favorites,
     required super.detail,
@@ -10,7 +10,7 @@ class TopByFansDevicesModel extends TopByFansDevices {
 
   factory TopByFansDevicesModel.fromJson(Map<String, dynamic> json) =>
       TopByFansDevicesModel(
-        phoneName: json["phone_name"],
+        deviceName: json["phone_name"],
         slug: json["slug"],
         favorites: json["favorites"],
         detail: json["detail"],
