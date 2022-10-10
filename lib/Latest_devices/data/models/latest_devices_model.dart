@@ -8,7 +8,7 @@ class LatestDevicesModel extends LatestDevices {
     required super.detail,
   });
 
-  factory LatestDevicesModel.fromJson(Map<String, String> json) =>
+  factory LatestDevicesModel.fromJson(Map<String, dynamic> json) =>
       LatestDevicesModel(
         phoneName: json["phone_name"]!,
         slug: json["slug"]!,

@@ -1,3 +1,4 @@
+import 'package:clean_arc_phony/phone_spec/domain/enitities/specifications.dart';
 import 'package:equatable/equatable.dart';
 
 class PhoneSpec extends Equatable {
@@ -19,37 +20,5 @@ class PhoneSpec extends Equatable {
         thumbnail,
         phoneImages,
         specifications,
-      ];
-}
-
-class Specifications extends Equatable {
-  final String title;
-  final List<Specs> specs;
-
-  const Specifications({
-    required this.title,
-    required this.specs,
-  });
-
-  @override
-  List<Object> get props => [
-        title,
-        specs,
-      ];
-}
-
-class Specs extends Equatable {
-  final String key;
-  final List<String> val;
-
-  const Specs({
-    required this.key,
-    required this.val,
-  });
-
-  @override
-  List<Object> get props => [
-        key,
-        val,
       ];
 }

@@ -15,7 +15,7 @@ class LatestDevicesRemoteDataSource extends BaseLatestDevicesRemoteDataSource {
 
     if (response.statusCode == 200) {
       return List<LatestDevicesModel>.from(
-          (response.data["phones"] as List).map(
+          (response.data["data"]["phones"] as List).map(
         (e) => LatestDevicesModel.fromJson(e),
       ));
     } else {

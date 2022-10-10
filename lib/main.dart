@@ -1,3 +1,4 @@
+import 'package:clean_arc_phony/phone_spec/presentation/screens/phone_spec_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -9,9 +10,12 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'Phony',
-      home: Scaffold(),
+    return MaterialApp(
+      title: 'Movies App',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+      ),
+      home: const PhoneSpecScreen(),
     );
   }
 }
