@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
               GetBrandsEvent(),
             ),
           child: MaterialApp(
+            debugShowCheckedModeBanner: false,
             title: 'Movies App',
             theme: ThemeData(
               primarySwatch: Colors.blue,

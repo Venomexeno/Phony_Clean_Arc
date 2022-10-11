@@ -16,8 +16,10 @@ class BrandDevicesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) =>
-          sl<BrandDevicesBloc>()..add(GetBrandDevicesEvent(brandSlug)),
+      create: (context) => sl<BrandDevicesBloc>()
+        ..add(
+          GetBrandDevicesEvent(brandSlug),
+        ),
       child: Scaffold(
         appBar: AppBar(
           title: Text(brandName.toUpperCase()),
@@ -79,7 +81,6 @@ class BrandDevicesScreen extends StatelessWidget {
                     );
                   },
                 );
-
               case RequestState.error:
                 return Center(
                   child: Text(state.errorMessage),
