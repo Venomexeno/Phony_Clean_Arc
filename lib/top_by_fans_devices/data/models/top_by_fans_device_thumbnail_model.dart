@@ -1,7 +1,7 @@
 
-import 'package:clean_arc_phony/top_by_fans_devices/domain/entities/top_by_fans_device_thumbnail.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/domain/entities/top_by_fans_devices_thumbnail.dart';
 
-class TopByFansDeviceThumbnailModel extends TopByFansDeviceThumbnail {
+class TopByFansDeviceThumbnailModel extends TopByFansDevicesThumbnail {
   const TopByFansDeviceThumbnailModel({
     required super.thumbnail,
   });

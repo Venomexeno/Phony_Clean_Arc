@@ -28,18 +28,19 @@ class LatestDevicesScreen extends StatelessWidget {
                 );
               case RequestState.loaded:
                 return GridView.builder(
-                  gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 200,
-                      childAspectRatio: 2 / 2.4,
-                      crossAxisSpacing: 20,
-                      mainAxisSpacing: 20),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      childAspectRatio: 2.3 / 3,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10),
                   itemCount: state.latestDevices.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final latestDevice = state.latestDevices[index];
                     return GestureDetector(
-                      onTap: () {},
+                      onTap: () {
+                        /// TODO: Navigate To Spec Screen
+                      },
                       child: Container(
-                        margin: EdgeInsets.only(left: 10.r,top: 10.r),
+                        margin: EdgeInsets.all(5.r),
                         padding: EdgeInsets.all(5.r),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
@@ -48,13 +49,13 @@ class LatestDevicesScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: Image.network(latestDevice.image),
+                              child: Image.network(state.latestDevices[index].image),
                             ),
                             SizedBox(height: 10.h),
                             Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Text(
-                                latestDevice.deviceName,
+                                state.latestDevices[index].deviceName,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 15.sp,
@@ -70,7 +71,7 @@ class LatestDevicesScreen extends StatelessWidget {
                 );
               case RequestState.error:
                 return Center(
-                  child: Text(state.latestDevicesMessage),
+                  child: Text(state.errorMessage),
                 );
             }
           },

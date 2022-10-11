@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
-class TopByFansDeviceThumbnail extends Equatable {
+class TopByFansDevicesThumbnail extends Equatable {
   final String thumbnail;
 
-  const TopByFansDeviceThumbnail({
+  const TopByFansDevicesThumbnail({
     required this.thumbnail,
   });
 

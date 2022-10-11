@@ -14,18 +14,20 @@ part 'latest_devices_state.dart';
 class LatestDevicesBloc extends Bloc<LatestDevicesEvent, LatestDevicesState> {
   final GetLatestDevicesUseCase getLatestDevicesUseCase;
 
-  LatestDevicesBloc(this.getLatestDevicesUseCase) : super(const LatestDevicesState()) {
+  LatestDevicesBloc(this.getLatestDevicesUseCase)
+      : super(const LatestDevicesState()) {
     on<GetLatestDevicesEvent>(_getLatestDevices);
   }
 
   FutureOr<void> _getLatestDevices(
       GetLatestDevicesEvent event, Emitter<LatestDevicesState> emit) async {
     final result = await getLatestDevicesUseCase(const NoParameters());
+
     result.fold(
       (l) => emit(
         state.copyWith(
           requestState: RequestState.error,
-          latestDevicesMessage: l.errorMessage,
+          errorMessage: l.errorMessage,
         ),
       ),
       (r) => emit(

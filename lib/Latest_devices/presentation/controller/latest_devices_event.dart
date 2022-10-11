@@ -8,4 +8,3 @@ abstract class LatestDevicesEvent extends Equatable {
 }
 
 class GetLatestDevicesEvent extends LatestDevicesEvent {}
-

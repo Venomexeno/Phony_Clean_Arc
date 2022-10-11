@@ -1,6 +1,8 @@
-import 'package:clean_arc_phony/Latest_devices/presentation/screens/latest_screen.dart';
 import 'package:clean_arc_phony/core/services/services_locator.dart';
+import 'package:clean_arc_phony/home/presentation/controller/brands_bloc.dart';
+import 'package:clean_arc_phony/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 void main() {
@@ -17,12 +19,18 @@ class MyApp extends StatelessWidget {
       designSize: const Size(360, 640),
       minTextAdapt: true,
       builder: (context, child) {
-        return MaterialApp(
-          title: 'Movies App',
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
+        return BlocProvider(
+          create: (context) => sl<BrandsBloc>()
+            ..add(
+              GetBrandsEvent(),
+            ),
+          child: MaterialApp(
+            title: 'Movies App',
+            theme: ThemeData(
+              primarySwatch: Colors.blue,
+            ),
+            home: const HomeScreen(),
           ),
-          home: const LatestDevicesScreen(),
         );
       },
     );

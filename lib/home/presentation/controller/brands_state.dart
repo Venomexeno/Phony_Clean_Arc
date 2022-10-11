@@ -1,23 +1,23 @@
-part of 'latest_devices_bloc.dart';
+part of 'brands_bloc.dart';
 
-class LatestDevicesState extends Equatable {
-  final List<LatestDevices> latestDevices;
+class BrandsState extends Equatable {
+  final List<Brands> brands;
   final RequestState requestState;
   final String errorMessage;
 
-  const LatestDevicesState({
-    this.latestDevices = const [],
+  const BrandsState({
+    this.brands = const [],
     this.requestState = RequestState.loading,
     this.errorMessage = '',
   });
 
-  LatestDevicesState copyWith({
-    List<LatestDevices>? latestDevices,
+  BrandsState copyWith({
+    List<Brands>? brands,
     RequestState? requestState,
     String? errorMessage,
   }) {
-    return LatestDevicesState(
-      latestDevices: latestDevices ?? this.latestDevices,
+    return BrandsState(
+      brands: brands ?? this.brands,
       requestState: requestState ?? this.requestState,
       errorMessage: errorMessage ?? this.errorMessage,
     );
@@ -25,7 +25,7 @@ class LatestDevicesState extends Equatable {
 
   @override
   List<Object> get props => [
-        latestDevices,
+        brands,
         requestState,
         errorMessage,
       ];
