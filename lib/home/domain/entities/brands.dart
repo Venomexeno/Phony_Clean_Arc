@@ -5,6 +5,7 @@ class Brands extends Equatable {
   final String brandName;
   final String brandSlug;
 
+
   Brands({
     required this.brandId,
     required this.brandName,

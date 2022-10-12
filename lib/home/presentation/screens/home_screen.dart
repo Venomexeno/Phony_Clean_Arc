@@ -19,8 +19,8 @@ class HomeScreen extends StatelessWidget {
         actions: [
           IconButton(
             icon: const Icon(Icons.search),
-            onPressed: () async {
-              await showSearch(
+            onPressed: () {
+              showSearch(
                 context: context,
                 delegate: DeviceSearch(
                   searchResultBloc: BlocProvider.of<SearchResultBloc>(context),
@@ -151,7 +151,7 @@ class DeviceSearch extends SearchDelegate {
                             child: Padding(
                               padding: EdgeInsets.all(10.r),
                               child: Text(
-                                state.searchResult[index].deviceName,
+                                "${state.searchResult[index].brand} ${state.searchResult[index].deviceName}",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,
                                   fontSize: 20.sp,
