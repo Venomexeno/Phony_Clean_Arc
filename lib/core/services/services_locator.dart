@@ -12,6 +12,7 @@ import 'package:clean_arc_phony/device_spec/data/datasource/device_spec_data_sou
 import 'package:clean_arc_phony/device_spec/data/repository/device_spec_repository.dart';
 import 'package:clean_arc_phony/device_spec/domain/repository/base_device_spec_repository.dart';
 import 'package:clean_arc_phony/device_spec/domain/usecase/get_device_spec_usecase.dart';
+import 'package:clean_arc_phony/device_spec/presentation/controller/device_spec_bloc.dart';
 import 'package:clean_arc_phony/home/data/datasource/brands_data_source.dart';
 import 'package:clean_arc_phony/home/data/repository/brands_repository.dart';
 import 'package:clean_arc_phony/home/domain/repository/base_brands_repository.dart';
@@ -37,6 +38,7 @@ class ServicesLocator {
     sl.registerFactory(() => BrandDevicesBloc(sl()));
     sl.registerFactory(() => LatestDevicesBloc(sl()));
     sl.registerFactory(() => TopByFansDevicesBloc(sl(), sl()));
+    sl.registerFactory(() => DeviceSpecBloc(sl()));
 
     /// UseCase
     sl.registerLazySingleton(() => GetBrandsUseCase(sl()));

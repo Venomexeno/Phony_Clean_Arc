@@ -6,6 +6,4 @@ import 'package:dartz/dartz.dart';
 abstract class BaseDeviceSpecRepository {
   Future<Either<Failure, DeviceSpec>> getDeviceSpec(
       DeviceSpecParameters parameters);
-
-
 }

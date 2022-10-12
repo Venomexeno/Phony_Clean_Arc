@@ -7,13 +7,13 @@ import 'package:dio/dio.dart';
 
 abstract class BaseDeviceSpecRemoteDataSource {
   Future<DeviceSpecModel> getDeviceSpec(DeviceSpecParameters parameters);
-
 }
 
 class DeviceRemoteDataSource extends BaseDeviceSpecRemoteDataSource {
   @override
   Future<DeviceSpecModel> getDeviceSpec(DeviceSpecParameters parameters) async {
-    final response = await Dio().get(ApiConstance.deviceSpecPath(parameters));
+    final response =
+        await Dio().get(ApiConstance.deviceSpecPath(parameters.slug));
     if (response.statusCode == 200) {
       return DeviceSpecModel.fromJson(response.data["data"]);
     } else {
@@ -22,5 +22,4 @@ class DeviceRemoteDataSource extends BaseDeviceSpecRemoteDataSource {
       );
     }
   }
-
 }

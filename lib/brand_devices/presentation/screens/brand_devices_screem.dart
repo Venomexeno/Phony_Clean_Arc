@@ -1,6 +1,7 @@
 import 'package:clean_arc_phony/brand_devices/presentation/controller/brand_devices_bloc.dart';
 import 'package:clean_arc_phony/core/services/services_locator.dart';
 import 'package:clean_arc_phony/core/utils/enums.dart';
+import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -38,7 +39,15 @@ class BrandDevicesScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        ///TODO: Navigate To PhoneSpec Screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => DeviceSpecScreen(
+                              slug: state.brandDevices[index].slug,
+                              deviceName: state.brandDevices[index].deviceName,
+                            ),
+                          ),
+                        );
                       },
                       child: Container(
                         margin: EdgeInsets.all(10.r),
