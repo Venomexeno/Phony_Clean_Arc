@@ -12,11 +12,12 @@ class BrandsDataSource extends BaseBrandsDataSource {
   @override
   Future<List<BrandsModel>> getBrands() async {
     final response = await Dio().get(ApiConstance.brandsPath);
-
     if (response.statusCode == 200) {
-      return List<BrandsModel>.from((response.data["data"] as List).map(
-        (e) => BrandsModel.fromJson(e),
-      ));
+      return List<BrandsModel>.from(
+        (response.data["data"] as List).map(
+          (e) => BrandsModel.fromJson(e),
+        ),
+      );
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),
