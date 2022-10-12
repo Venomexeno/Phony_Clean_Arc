@@ -21,6 +21,7 @@ import 'package:clean_arc_phony/home/presentation/controller/brands_bloc.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/data/datasource/top_by_fans_devices_remote_data_source.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/data/repository/top_by_fans_devices_repository.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/domain/repository/base_top_by_fans_devices_repository.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_devices_thumbnail_usecase.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_devices_usecase.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/presentation/controller/top_by_fans_devices_bloc.dart';
 import 'package:clean_arc_phony/top_by_interest_devices/data/datasource/top_by_interest_devices_data_source.dart';
@@ -37,7 +38,7 @@ class ServicesLocator {
     sl.registerFactory(() => BrandsBloc(sl()));
     sl.registerFactory(() => BrandDevicesBloc(sl()));
     sl.registerFactory(() => LatestDevicesBloc(sl()));
-    sl.registerFactory(() => TopByFansDevicesBloc(sl(), sl()));
+    sl.registerFactory(() => TopByFansDevicesBloc(sl(),sl()));
     sl.registerFactory(() => DeviceSpecBloc(sl()));
 
     /// UseCase
@@ -45,6 +46,7 @@ class ServicesLocator {
     sl.registerLazySingleton(() => GetBrandDevicesUseCase(sl()));
     sl.registerLazySingleton(() => GetLatestDevicesUseCase(sl()));
     sl.registerLazySingleton(() => GetTopByFansDevicesUseCase(sl()));
+    sl.registerLazySingleton(() => GetTopByFansDevicesThumbnailUseCase(sl()));
     sl.registerLazySingleton(() => GetTopByInterestDevicesUseCase(sl()));
     sl.registerLazySingleton(() => GetDeviceSpecUseCase(sl()));
 

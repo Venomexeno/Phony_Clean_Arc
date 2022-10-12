@@ -1,5 +1,6 @@
 import 'package:clean_arc_phony/home/presentation/components/brands_list.dart';
 import 'package:clean_arc_phony/core/utils/app_constance.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/presentation/screens/top_by_fans_devices_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -13,10 +14,18 @@ class HomeScreen extends StatelessWidget {
         title: const Text(AppConstance.appName),
         centerTitle: true,
         actions: [
-          ElevatedButton(
-            onPressed: () {},
-            child: const Icon(Icons.search),
-          )
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (BuildContext context) =>
+                      TopByFansDevicesScreen(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.search),
+          ),
         ],
       ),
       body: Column(

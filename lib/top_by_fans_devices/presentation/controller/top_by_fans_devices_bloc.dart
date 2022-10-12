@@ -23,33 +23,46 @@ class TopByFansDevicesBloc
     this.getTopByFansDevicesThumbnailUseCase,
   ) : super(const TopByFansDevicesState()) {
     on<GetTopByFansDevicesEvent>(_getTopByFansDevices);
-    on<GetTopByFansDevicesThumbnailEvent>(_getTopByFansDevicesThumbnail);
   }
 
   FutureOr<void> _getTopByFansDevices(GetTopByFansDevicesEvent event,
       Emitter<TopByFansDevicesState> emit) async {
-    final result = await getTopByFansDevicesUseCase(const NoParameters());
+    final deviceResult = await getTopByFansDevicesUseCase(const NoParameters());
+    List<String> thumbnail = [];
 
-    result.fold(
+    deviceResult.fold(
       (l) => emit(
         state.copyWith(
-          topByFansRequestState: RequestState.error,
-          topByFansErrorMessage: l.errorMessage,
+          topByFansDevicesRequestState: RequestState.error,
+          topByFansDevicesErrorMessage: l.errorMessage,
         ),
       ),
       (r) => emit(
         state.copyWith(
-          topByFansDevicesThumbnailRequestState: RequestState.loaded,
+          topByFansDevicesRequestState: RequestState.loaded,
           topByFansDevices: r,
         ),
       ),
     );
-  }
+    for (int index = 0; index < state.topByFansDevices.length; index++) {
+      final thumbnailResult = await getTopByFansDevicesThumbnailUseCase(
+          TopByFansDeviceThumbnailParameter(
+              slug: state.topByFansDevices[index].slug));
 
-  FutureOr<void> _getTopByFansDevicesThumbnail(
-      GetTopByFansDevicesThumbnailEvent event,
-      Emitter<TopByFansDevicesState> emit) async {
-    final result = await getTopByFansDevicesThumbnailUseCase(
-        TopByFansDeviceThumbnailParameter(slug: event.slug));
+      thumbnailResult.fold(
+        (l) => emit(
+          state.copyWith(
+              topByFansDevicesThumbnailRequestState: RequestState.error,
+              topByFansDeviceThumbnailErrorMessage: l.errorMessage),
+        ),
+        (r) => thumbnail.add(r.thumbnail),
+      );
+    }
+    emit(
+      state.copyWith(
+        topByFansDevicesThumbnailRequestState: RequestState.loaded,
+        thumbnail: thumbnail,
+      ),
+    );
   }
 }

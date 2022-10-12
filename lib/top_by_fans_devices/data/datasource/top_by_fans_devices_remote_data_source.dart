@@ -9,7 +9,7 @@ import 'package:dio/dio.dart';
 abstract class BaseTopByFansDevicesRemoteDataSource {
   Future<List<TopByFansDevicesModel>> getTopByFansDevices();
 
-  Future<List<TopByFansDeviceThumbnailModel>> getTopByFansDeviceThumbnail(
+  Future<TopByFansDeviceThumbnailModel> getTopByFansDeviceThumbnail(
       TopByFansDeviceThumbnailParameter parameters);
 }
 
@@ -32,15 +32,12 @@ class TopByFansDevicesRemoteDataSource
   }
 
   @override
-  Future<List<TopByFansDeviceThumbnailModel>> getTopByFansDeviceThumbnail(
+  Future<TopByFansDeviceThumbnailModel> getTopByFansDeviceThumbnail(
       TopByFansDeviceThumbnailParameter parameters) async {
     final response =
-        await Dio().get(ApiConstance.deviceThumbnailPath(parameters));
+        await Dio().get(ApiConstance.deviceThumbnailPath(parameters.slug));
     if (response.statusCode == 200) {
-      return List<TopByFansDeviceThumbnailModel>.from(
-          (response.data["data"]["phones"] as List).map(
-        (e) => TopByFansDevicesModel.fromJson(e),
-      ));
+      return TopByFansDeviceThumbnailModel.fromJson(response.data["data"]);
     } else {
       throw ServerException(
         errorMessageModel: ErrorMessageModel.fromJson(response.data),

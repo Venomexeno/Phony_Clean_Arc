@@ -2,54 +2,58 @@ part of 'top_by_fans_devices_bloc.dart';
 
 class TopByFansDevicesState extends Equatable {
   final List<TopByFansDevices> topByFansDevices;
-  final RequestState topByFansRequestState;
-  final String topByFansErrorMessage;
+  final RequestState topByFansDevicesRequestState;
+  final String topByFansDevicesErrorMessage;
 
-  final List<TopByFansDevicesThumbnail> topByFansDevicesThumbnail;
+  final TopByFansDevicesThumbnail? topByFansDevicesThumbnail;
+  final List<String> thumbnail;
   final RequestState topByFansDevicesThumbnailRequestState;
-  final String topByFansDevicesThumbnailErrorMessage;
+  final String topByFansDeviceThumbnailErrorMessage;
 
   const TopByFansDevicesState({
     this.topByFansDevices = const [],
-    this.topByFansRequestState = RequestState.loading,
-    this.topByFansErrorMessage = '',
-    this.topByFansDevicesThumbnail = const [],
+    this.topByFansDevicesRequestState = RequestState.loading,
+    this.topByFansDevicesErrorMessage = '',
+    this.topByFansDevicesThumbnail,
+    this.thumbnail = const [],
     this.topByFansDevicesThumbnailRequestState = RequestState.loading,
-    this.topByFansDevicesThumbnailErrorMessage = '',
+    this.topByFansDeviceThumbnailErrorMessage = '',
   });
 
   TopByFansDevicesState copyWith({
     List<TopByFansDevices>? topByFansDevices,
-    RequestState? topByFansRequestState,
-    String? topByFansErrorMessage,
-    List<TopByFansDevicesThumbnail>? topByFansDevicesThumbnail,
+    RequestState? topByFansDevicesRequestState,
+    String? topByFansDevicesErrorMessage,
+    TopByFansDevicesThumbnail? topByFansDevicesThumbnail,
+    List<String>? thumbnail,
     RequestState? topByFansDevicesThumbnailRequestState,
-    String? topByFansDevicesThumbnailErrorMessage,
+    String? topByFansDeviceThumbnailErrorMessage,
   }) {
     return TopByFansDevicesState(
       topByFansDevices: topByFansDevices ?? this.topByFansDevices,
-      topByFansRequestState:
-          topByFansRequestState ?? this.topByFansRequestState,
-      topByFansErrorMessage:
-          topByFansErrorMessage ?? this.topByFansErrorMessage,
+      topByFansDevicesRequestState:
+          topByFansDevicesRequestState ?? this.topByFansDevicesRequestState,
+      topByFansDevicesErrorMessage:
+          topByFansDevicesErrorMessage ?? this.topByFansDevicesErrorMessage,
       topByFansDevicesThumbnail:
           topByFansDevicesThumbnail ?? this.topByFansDevicesThumbnail,
+      thumbnail: thumbnail ?? this.thumbnail,
       topByFansDevicesThumbnailRequestState:
           topByFansDevicesThumbnailRequestState ??
               this.topByFansDevicesThumbnailRequestState,
-      topByFansDevicesThumbnailErrorMessage:
-          topByFansDevicesThumbnailErrorMessage ??
-              this.topByFansDevicesThumbnailErrorMessage,
+      topByFansDeviceThumbnailErrorMessage:
+          topByFansDeviceThumbnailErrorMessage ??
+              this.topByFansDeviceThumbnailErrorMessage,
     );
   }
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         topByFansDevices,
-        topByFansRequestState,
-        topByFansErrorMessage,
+        topByFansDevicesRequestState,
+        topByFansDevicesErrorMessage,
         topByFansDevicesThumbnail,
         topByFansDevicesThumbnailRequestState,
-        topByFansDevicesThumbnailErrorMessage,
+        topByFansDeviceThumbnailErrorMessage,
       ];
 }

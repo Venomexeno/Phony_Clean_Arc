@@ -8,12 +8,3 @@ abstract class TopByFansDevicesEvent extends Equatable {
 }
 
 class GetTopByFansDevicesEvent extends TopByFansDevicesEvent {}
-
-class GetTopByFansDevicesThumbnailEvent extends TopByFansDevicesEvent {
-  final String slug;
-
-  const GetTopByFansDevicesThumbnailEvent(this.slug);
-
-  @override
-  List<Object> get props => [slug];
-}

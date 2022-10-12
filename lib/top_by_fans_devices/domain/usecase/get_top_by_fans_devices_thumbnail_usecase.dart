@@ -5,16 +5,17 @@ import 'package:clean_arc_phony/top_by_fans_devices/domain/repository/base_top_b
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-class GetTopByFansDevicesThumbnailUseCase
-    extends BaseUseCase<List<TopByFansDevicesThumbnail>, TopByFansDeviceThumbnailParameter> {
+class GetTopByFansDevicesThumbnailUseCase extends BaseUseCase<
+    TopByFansDevicesThumbnail, TopByFansDeviceThumbnailParameter> {
   final BaseTopByFansDevicesRepository baseTopByFansDevicesRepository;
 
   GetTopByFansDevicesThumbnailUseCase(this.baseTopByFansDevicesRepository);
 
   @override
-  Future<Either<Failure, List<TopByFansDevicesThumbnail>>> call(
+  Future<Either<Failure, TopByFansDevicesThumbnail>> call(
       TopByFansDeviceThumbnailParameter parameters) async {
-    return await baseTopByFansDevicesRepository.getTopByFansDeviceThumbnail(parameters);
+    return await baseTopByFansDevicesRepository
+        .getTopByFansDeviceThumbnail(parameters);
   }
 }
 

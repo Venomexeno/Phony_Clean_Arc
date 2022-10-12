@@ -1,13 +1,16 @@
 import 'package:clean_arc_phony/core/services/services_locator.dart';
 import 'package:clean_arc_phony/core/utils/app_constance.dart';
 import 'package:clean_arc_phony/core/utils/enums.dart';
+import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_screen.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/presentation/controller/top_by_fans_devices_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TopByFansDevicesScreen extends StatelessWidget {
-  const TopByFansDevicesScreen({Key? key}) : super(key: key);
+  TopByFansDevicesScreen({Key? key}) : super(key: key);
+
+  List<String> deviceImage = const [];
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
         ),
         body: BlocBuilder<TopByFansDevicesBloc, TopByFansDevicesState>(
           builder: (context, state) {
-            switch (state.topByFansRequestState) {
+            switch (state.topByFansDevicesRequestState) {
               case RequestState.loading:
                 return const Center(
                   child: CircularProgressIndicator(),
@@ -38,7 +41,15 @@ class TopByFansDevicesScreen extends StatelessWidget {
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
-                        /// TODO: Navigate To Spec Screen
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => DeviceSpecScreen(
+                                slug: state.topByFansDevices[index].slug,
+                                deviceName:
+                                    state.topByFansDevices[index].deviceName),
+                          ),
+                        );
                       },
                       child: Container(
                         margin: EdgeInsets.all(5.r),
@@ -50,8 +61,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: Image.network(state
-                                  .topByFansDevicesThumbnail[index].thumbnail),
+                              child: _buildImage(index),
                             ),
                             SizedBox(height: 10.h),
                             Padding(
@@ -99,12 +109,31 @@ class TopByFansDevicesScreen extends StatelessWidget {
                 );
               case RequestState.error:
                 return Center(
-                  child: Text(state.topByFansErrorMessage),
+                  child: Text(state.topByFansDevicesErrorMessage),
                 );
             }
           },
         ),
       ),
+    );
+  }
+
+  Widget _buildImage(int index) {
+    return BlocBuilder<TopByFansDevicesBloc, TopByFansDevicesState>(
+      builder: (context, state) {
+        switch (state.topByFansDevicesThumbnailRequestState) {
+          case RequestState.loading:
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          case RequestState.loaded:
+            return Image.network(state.thumbnail[index]);
+          case RequestState.error:
+            return Center(
+              child: Text(state.topByFansDeviceThumbnailErrorMessage),
+            );
+        }
+      },
     );
   }
 }

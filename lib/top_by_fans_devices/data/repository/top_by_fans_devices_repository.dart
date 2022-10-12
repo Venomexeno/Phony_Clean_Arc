@@ -25,7 +25,7 @@ class TopByFansDevicesRepository extends BaseTopByFansDevicesRepository {
   }
 
   @override
-  Future<Either<Failure, List<TopByFansDevicesThumbnail>>> getTopByFansDeviceThumbnail(
+  Future<Either<Failure, TopByFansDevicesThumbnail>> getTopByFansDeviceThumbnail(
       TopByFansDeviceThumbnailParameter parameters) async {
     final result = await baseTopByFansDevicesRemoteDataSource
         .getTopByFansDeviceThumbnail(parameters);
