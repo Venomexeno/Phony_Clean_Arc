@@ -6,15 +6,15 @@ import 'package:clean_arc_phony/top_by_interest_devices/data/models/top_by_inter
 import 'package:clean_arc_phony/top_by_interest_devices/domain/usecase/get_top_by_interest_device_thumbnail_usecase.dart';
 import 'package:dio/dio.dart';
 
-abstract class BaseTopByInterestDevicesDataSource {
+abstract class BaseTopByInterestDevicesRemoteDataSource {
   Future<List<TopByInterestDevicesModel>> getTopByInterestDevices();
 
   Future<TopByInterestDeviceThumbnailModel> getTopByInterestDeviceThumbnail(
       TopByInterestDeviceThumbnailParameter parameters);
 }
 
-class TopByInterestDevicesDataSource
-    extends BaseTopByInterestDevicesDataSource {
+class TopByInterestDevicesRemoteDataSource
+    extends BaseTopByInterestDevicesRemoteDataSource {
   @override
   Future<List<TopByInterestDevicesModel>> getTopByInterestDevices() async {
     final response = await Dio().get(ApiConstance.topByInterestDevicesPath);

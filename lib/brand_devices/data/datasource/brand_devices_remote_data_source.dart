@@ -5,12 +5,12 @@ import 'package:clean_arc_phony/core/network/api_constance.dart';
 import 'package:clean_arc_phony/core/network/error_message_model.dart';
 import 'package:dio/dio.dart';
 
-abstract class BaseBrandDevicesDataSource {
+abstract class BaseBrandDevicesRemoteDataSource {
   Future<List<BrandDevicesModel>> getBrandDevices(
       BrandDevicesParameter parameters);
 }
 
-class BrandDevicesDataSource extends BaseBrandDevicesDataSource {
+class BrandDevicesRemoteDataSource extends BaseBrandDevicesRemoteDataSource {
   @override
   Future<List<BrandDevicesModel>> getBrandDevices(
       BrandDevicesParameter parameters) async {

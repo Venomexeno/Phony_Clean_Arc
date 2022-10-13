@@ -1,4 +1,4 @@
-import 'package:clean_arc_phony/Latest_devices/data/datasource/latest_devices_remote_data_source.dart';
+import 'package:clean_arc_phony/Latest_devices/data/datasource/latest_devices_data_remote_source.dart';
 import 'package:clean_arc_phony/Latest_devices/domain/entities/latest_devices.dart';
 import 'package:clean_arc_phony/Latest_devices/domain/repository/base_latest_devices_repository.dart';
 import 'package:clean_arc_phony/core/error/exceptions.dart';

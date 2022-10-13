@@ -3,6 +3,8 @@ import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_scr
 import 'package:clean_arc_phony/home/presentation/components/brands_list.dart';
 import 'package:clean_arc_phony/core/utils/app_constance.dart';
 import 'package:clean_arc_phony/home/presentation/controller/search_result_bloc.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/presentation/screens/top_by_fans_devices_screen.dart';
+import 'package:clean_arc_phony/top_by_interest_devices/presentation/screens/top_by_interest_devices_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,14 +35,15 @@ class HomeScreen extends StatelessWidget {
       body: Column(
         children: [
           Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+            padding: EdgeInsets.symmetric(horizontal: 5.r),
             width: double.infinity,
             child: ElevatedButton(
               onPressed: () {
                 showModalBottomSheet(
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(25.0.r)),
+                    borderRadius: BorderRadius.vertical(
+                      top: Radius.circular(25.0.r),
+                    ),
                   ),
                   context: context,
                   builder: (context) {
@@ -50,6 +53,45 @@ class HomeScreen extends StatelessWidget {
               },
               child: const Text(AppConstance.brands),
             ),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.r),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const TopByFansDevicesScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(AppConstance.topByFans),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.r),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (BuildContext context) =>
+                              const TopByInterestDevicesScreen(),
+                        ),
+                      );
+                    },
+                    child: const Text(AppConstance.topByInterest),
+                  ),
+                ),
+              ),
+            ],
           )
         ],
       ),
@@ -130,7 +172,7 @@ class DeviceSearch extends SearchDelegate {
                       margin: EdgeInsets.all(10.r),
                       height: 200.h,
                       decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
+                        borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: Row(
                         mainAxisSize: MainAxisSize.min,

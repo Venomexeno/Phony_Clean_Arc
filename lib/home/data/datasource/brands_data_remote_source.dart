@@ -4,11 +4,11 @@ import 'package:clean_arc_phony/core/network/error_message_model.dart';
 import 'package:clean_arc_phony/home/data/models/brands_model.dart';
 import 'package:dio/dio.dart';
 
-abstract class BaseBrandsDataSource {
+abstract class BaseBrandsRemoteDataSource {
   Future<List<BrandsModel>> getBrands();
 }
 
-class BrandsDataSource extends BaseBrandsDataSource {
+class BrandsRemoteDataSource extends BaseBrandsRemoteDataSource {
   @override
   Future<List<BrandsModel>> getBrands() async {
     final response = await Dio().get(ApiConstance.brandsPath);

@@ -5,12 +5,12 @@ import 'package:clean_arc_phony/home/data/models/search_result_model.dart';
 import 'package:clean_arc_phony/home/domain/usecase/get_search_result_usecase.dart';
 import 'package:dio/dio.dart';
 
-abstract class BaseSearchResultDataSource {
+abstract class BaseSearchResultRemoteDataSource {
   Future<List<SearchResultModel>> getSearchResult(
       SearchResultParameter parameters);
 }
 
-class SearchResultDataSource extends BaseSearchResultDataSource {
+class SearchResultRemoteDataSource extends BaseSearchResultRemoteDataSource {
   @override
   Future<List<SearchResultModel>> getSearchResult(
       SearchResultParameter parameters) async {
