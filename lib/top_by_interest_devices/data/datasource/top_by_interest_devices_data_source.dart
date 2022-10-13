@@ -35,7 +35,7 @@ class TopByInterestDevicesDataSource
   Future<TopByInterestDeviceThumbnailModel> getTopByInterestDeviceThumbnail(
       TopByInterestDeviceThumbnailParameter parameters) async {
     final response =
-    await Dio().get(ApiConstance.deviceThumbnailPath(parameters));
+    await Dio().get(ApiConstance.deviceThumbnailPath(parameters.slug));
     if (response.statusCode == 200) {
       return TopByInterestDeviceThumbnailModel.fromJson(response.data["data"]);
     } else {

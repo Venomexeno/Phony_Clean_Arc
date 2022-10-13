@@ -1,29 +1,29 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_arc_phony/core/services/services_locator.dart';
 import 'package:clean_arc_phony/core/utils/app_constance.dart';
 import 'package:clean_arc_phony/core/utils/enums.dart';
 import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_screen.dart';
-import 'package:clean_arc_phony/top_by_fans_devices/presentation/controller/top_by_fans_devices_bloc.dart';
+import 'package:clean_arc_phony/top_by_interest_devices/presentation/controller/top_by_interest_devices_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
-class TopByFansDevicesScreen extends StatelessWidget {
-  const TopByFansDevicesScreen({Key? key}) : super(key: key);
+class TopByInterestDevicesScreen extends StatelessWidget {
+  const TopByInterestDevicesScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) =>
-          sl<TopByFansDevicesBloc>()..add(GetTopByFansDevicesEvent()),
+          sl<TopByInterestDevicesBloc>()..add(GetTopByInterestDevicesEvent()),
       child: Scaffold(
         appBar: AppBar(
-          title: const Text(AppConstance.topByFans),
+          title: const Text(AppConstance.topByInterest),
           centerTitle: true,
         ),
-        body: BlocBuilder<TopByFansDevicesBloc, TopByFansDevicesState>(
+        body: BlocBuilder<TopByInterestDevicesBloc, TopByInterestDevicesState>(
           builder: (context, state) {
-            switch (state.topByFansDevicesRequestState) {
+            switch (state.topByInterestDevicesRequestState) {
               case RequestState.loading:
                 return const Center(
                   child: CircularProgressIndicator(),
@@ -36,7 +36,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
                     crossAxisSpacing: 10,
                     childAspectRatio: 2.3 / 3,
                   ),
-                  itemCount: state.topByFansDevices.length,
+                  itemCount: state.topByInterestDevices.length,
                   itemBuilder: (BuildContext context, int index) {
                     return GestureDetector(
                       onTap: () {
@@ -44,9 +44,9 @@ class TopByFansDevicesScreen extends StatelessWidget {
                           context,
                           MaterialPageRoute(
                             builder: (BuildContext context) => DeviceSpecScreen(
-                                slug: state.topByFansDevices[index].slug,
-                                deviceName:
-                                    state.topByFansDevices[index].deviceName),
+                                slug: state.topByInterestDevices[index].slug,
+                                deviceName: state
+                                    .topByInterestDevices[index].deviceName),
                           ),
                         );
                       },
@@ -60,11 +60,11 @@ class TopByFansDevicesScreen extends StatelessWidget {
                         child: Column(
                           children: [
                             Expanded(
-                              child: BlocBuilder<TopByFansDevicesBloc,
-                                  TopByFansDevicesState>(
+                              child: BlocBuilder<TopByInterestDevicesBloc,
+                                  TopByInterestDevicesState>(
                                 builder: (context, state) {
                                   switch (state
-                                      .topByFansDeviceThumbnailRequestState) {
+                                      .topByInterestDeviceThumbnailRequestState) {
                                     case RequestState.loading:
                                       return const Center(
                                         child: CircularProgressIndicator(),
@@ -75,8 +75,10 @@ class TopByFansDevicesScreen extends StatelessWidget {
                                       );
                                     case RequestState.error:
                                       return Center(
-                                        child: Text(state
-                                            .topByFansDeviceThumbnailErrorMessage),
+                                        child: Text(
+                                          state
+                                              .topByInterestDeviceThumbnailErrorMessage,
+                                        ),
                                       );
                                   }
                                 },
@@ -86,7 +88,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.all(4.0),
                               child: Text(
-                                state.topByFansDevices[index].deviceName,
+                                state.topByInterestDevices[index].deviceName,
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                   fontSize: 15.sp,
@@ -100,7 +102,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    AppConstance.favorites,
+                                    AppConstance.hits,
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
                                       fontSize: 15.sp,
@@ -108,7 +110,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
                                     ),
                                   ),
                                   Text(
-                                    state.topByFansDevices[index].favorites
+                                    state.topByInterestDevices[index].hits
                                         .toString(),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
@@ -128,7 +130,7 @@ class TopByFansDevicesScreen extends StatelessWidget {
                 );
               case RequestState.error:
                 return Center(
-                  child: Text(state.topByFansDevicesErrorMessage),
+                  child: Text(state.topByInterestDevicesErrorMessage),
                 );
             }
           },

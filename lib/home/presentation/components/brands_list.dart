@@ -22,13 +22,11 @@ class BrandsList extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 childAspectRatio: 3 / 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
               ),
               itemCount: state.brands.length,
               itemBuilder: (BuildContext context, int index) {
                 return InkWell(
-                  borderRadius: BorderRadius.circular(20.r),
+                  borderRadius: BorderRadius.circular(25.r),
                   onTap: () {
                     Navigator.push(
                       context,
@@ -42,6 +40,7 @@ class BrandsList extends StatelessWidget {
                   },
                   child: Center(
                     child: Text(
+                      style: TextStyle(fontSize: 18.sp),
                       state.brands[index].brandName.toUpperCase(),
                     ),
                   ),

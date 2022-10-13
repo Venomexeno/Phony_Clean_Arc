@@ -23,16 +23,18 @@ import 'package:clean_arc_phony/home/domain/usecase/get_brands_usecase.dart';
 import 'package:clean_arc_phony/home/domain/usecase/get_search_result_usecase.dart';
 import 'package:clean_arc_phony/home/presentation/controller/brands_bloc.dart';
 import 'package:clean_arc_phony/home/presentation/controller/search_result_bloc.dart';
-import 'package:clean_arc_phony/top_by_fans_devices/data/datasource/top_by_fans_devices_remote_data_source.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/data/datasource/top_by_fans_devices_data_source.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/data/repository/top_by_fans_devices_repository.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/domain/repository/base_top_by_fans_devices_repository.dart';
-import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_devices_thumbnail_usecase.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_device_thumbnail_usecase.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_devices_usecase.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/presentation/controller/top_by_fans_devices_bloc.dart';
 import 'package:clean_arc_phony/top_by_interest_devices/data/datasource/top_by_interest_devices_data_source.dart';
 import 'package:clean_arc_phony/top_by_interest_devices/data/repository/top_by_interest_devices_repository.dart';
 import 'package:clean_arc_phony/top_by_interest_devices/domain/repository/base_top_by_interest_devices_repository.dart';
+import 'package:clean_arc_phony/top_by_interest_devices/domain/usecase/get_top_by_interest_device_thumbnail_usecase.dart';
 import 'package:clean_arc_phony/top_by_interest_devices/domain/usecase/get_top_by_interest_devices_usecase.dart';
+import 'package:clean_arc_phony/top_by_interest_devices/presentation/controller/top_by_interest_devices_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -45,6 +47,7 @@ class ServicesLocator {
     sl.registerFactory(() => BrandDevicesBloc(sl()));
     sl.registerFactory(() => LatestDevicesBloc(sl()));
     sl.registerFactory(() => TopByFansDevicesBloc(sl(), sl()));
+    sl.registerFactory(() => TopByInterestDevicesBloc(sl(), sl()));
     sl.registerFactory(() => DeviceSpecBloc(sl()));
 
     /// UseCase
@@ -53,8 +56,9 @@ class ServicesLocator {
     sl.registerLazySingleton(() => GetSearchResultUseCase(sl()));
     sl.registerLazySingleton(() => GetLatestDevicesUseCase(sl()));
     sl.registerLazySingleton(() => GetTopByFansDevicesUseCase(sl()));
-    sl.registerLazySingleton(() => GetTopByFansDevicesThumbnailUseCase(sl()));
+    sl.registerLazySingleton(() => GetTopByFansDeviceThumbnailUseCase(sl()));
     sl.registerLazySingleton(() => GetTopByInterestDevicesUseCase(sl()));
+    sl.registerLazySingleton(() => GetTopByInterestDeviceThumbnailUseCase(sl()));
     sl.registerLazySingleton(() => GetDeviceSpecUseCase(sl()));
 
     /// Repository
@@ -81,8 +85,8 @@ class ServicesLocator {
         () => SearchResultDataSource());
     sl.registerLazySingleton<BaseLatestDevicesRemoteDataSource>(
         () => LatestDevicesRemoteDataSource());
-    sl.registerLazySingleton<BaseTopByFansDevicesRemoteDataSource>(
-        () => TopByFansDevicesRemoteDataSource());
+    sl.registerLazySingleton<BaseTopByFansDevicesDataSource>(
+        () => TopByFansDevicesDataSource());
     sl.registerLazySingleton<BaseTopByInterestDevicesDataSource>(
         () => TopByInterestDevicesDataSource());
     sl.registerLazySingleton<BaseDeviceSpecRemoteDataSource>(

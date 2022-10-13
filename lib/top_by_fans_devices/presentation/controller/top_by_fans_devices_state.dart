@@ -5,18 +5,18 @@ class TopByFansDevicesState extends Equatable {
   final RequestState topByFansDevicesRequestState;
   final String topByFansDevicesErrorMessage;
 
-  final TopByFansDevicesThumbnail? topByFansDevicesThumbnail;
+  final TopByFansDeviceThumbnail? topByFansDeviceThumbnail;
   final List<String> thumbnail;
-  final RequestState topByFansDevicesThumbnailRequestState;
+  final RequestState topByFansDeviceThumbnailRequestState;
   final String topByFansDeviceThumbnailErrorMessage;
 
   const TopByFansDevicesState({
     this.topByFansDevices = const [],
     this.topByFansDevicesRequestState = RequestState.loading,
     this.topByFansDevicesErrorMessage = '',
-    this.topByFansDevicesThumbnail,
+    this.topByFansDeviceThumbnail,
     this.thumbnail = const [],
-    this.topByFansDevicesThumbnailRequestState = RequestState.loading,
+    this.topByFansDeviceThumbnailRequestState = RequestState.loading,
     this.topByFansDeviceThumbnailErrorMessage = '',
   });
 
@@ -24,9 +24,9 @@ class TopByFansDevicesState extends Equatable {
     List<TopByFansDevices>? topByFansDevices,
     RequestState? topByFansDevicesRequestState,
     String? topByFansDevicesErrorMessage,
-    TopByFansDevicesThumbnail? topByFansDevicesThumbnail,
+    TopByFansDeviceThumbnail? topByFansDeviceThumbnail,
     List<String>? thumbnail,
-    RequestState? topByFansDevicesThumbnailRequestState,
+    RequestState? topByFansDeviceThumbnailRequestState,
     String? topByFansDeviceThumbnailErrorMessage,
   }) {
     return TopByFansDevicesState(
@@ -35,12 +35,12 @@ class TopByFansDevicesState extends Equatable {
           topByFansDevicesRequestState ?? this.topByFansDevicesRequestState,
       topByFansDevicesErrorMessage:
           topByFansDevicesErrorMessage ?? this.topByFansDevicesErrorMessage,
-      topByFansDevicesThumbnail:
-          topByFansDevicesThumbnail ?? this.topByFansDevicesThumbnail,
+      topByFansDeviceThumbnail:
+          topByFansDeviceThumbnail ?? this.topByFansDeviceThumbnail,
       thumbnail: thumbnail ?? this.thumbnail,
-      topByFansDevicesThumbnailRequestState:
-          topByFansDevicesThumbnailRequestState ??
-              this.topByFansDevicesThumbnailRequestState,
+      topByFansDeviceThumbnailRequestState:
+          topByFansDeviceThumbnailRequestState ??
+              this.topByFansDeviceThumbnailRequestState,
       topByFansDeviceThumbnailErrorMessage:
           topByFansDeviceThumbnailErrorMessage ??
               this.topByFansDeviceThumbnailErrorMessage,
@@ -52,8 +52,8 @@ class TopByFansDevicesState extends Equatable {
         topByFansDevices,
         topByFansDevicesRequestState,
         topByFansDevicesErrorMessage,
-        topByFansDevicesThumbnail,
-        topByFansDevicesThumbnailRequestState,
+        topByFansDeviceThumbnail,
+        topByFansDeviceThumbnailRequestState,
         topByFansDeviceThumbnailErrorMessage,
       ];
 }

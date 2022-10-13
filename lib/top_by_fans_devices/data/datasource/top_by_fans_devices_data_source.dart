@@ -3,18 +3,17 @@ import 'package:clean_arc_phony/core/network/api_constance.dart';
 import 'package:clean_arc_phony/core/network/error_message_model.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/data/models/top_by_fans_device_thumbnail_model.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/data/models/top_by_fans_devices_model.dart';
-import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_devices_thumbnail_usecase.dart';
+import 'package:clean_arc_phony/top_by_fans_devices/domain/usecase/get_top_by_fans_device_thumbnail_usecase.dart';
 import 'package:dio/dio.dart';
 
-abstract class BaseTopByFansDevicesRemoteDataSource {
+abstract class BaseTopByFansDevicesDataSource {
   Future<List<TopByFansDevicesModel>> getTopByFansDevices();
 
   Future<TopByFansDeviceThumbnailModel> getTopByFansDeviceThumbnail(
       TopByFansDeviceThumbnailParameter parameters);
 }
 
-class TopByFansDevicesRemoteDataSource
-    extends BaseTopByFansDevicesRemoteDataSource {
+class TopByFansDevicesDataSource extends BaseTopByFansDevicesDataSource {
   @override
   Future<List<TopByFansDevicesModel>> getTopByFansDevices() async {
     final response = await Dio().get(ApiConstance.topByFansDevicesPath);
