@@ -1,4 +1,4 @@
-import 'package:clean_arc_phony/Latest_devices/data/models/latest_devices_model.dart';
+import 'package:clean_arc_phony/home/data/models/latest_devices_model.dart';
 import 'package:clean_arc_phony/core/error/exceptions.dart';
 import 'package:clean_arc_phony/core/network/api_constance.dart';
 import 'package:clean_arc_phony/core/network/error_message_model.dart';

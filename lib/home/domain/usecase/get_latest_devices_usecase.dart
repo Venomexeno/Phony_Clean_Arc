@@ -1,4 +1,4 @@
-import 'package:clean_arc_phony/Latest_devices/domain/repository/base_latest_devices_repository.dart';
+import 'package:clean_arc_phony/home/domain/repository/base_latest_devices_repository.dart';
 import 'package:clean_arc_phony/core/error/failure.dart';
 import 'package:clean_arc_phony/core/ussecase/base_usecase.dart';
 import 'package:dartz/dartz.dart';

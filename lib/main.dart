@@ -1,5 +1,6 @@
 import 'package:clean_arc_phony/core/services/services_locator.dart';
 import 'package:clean_arc_phony/home/presentation/controller/brands_bloc.dart';
+import 'package:clean_arc_phony/home/presentation/controller/latest_devices_bloc.dart';
 import 'package:clean_arc_phony/home/presentation/controller/search_result_bloc.dart';
 import 'package:clean_arc_phony/home/presentation/screens/home_screen.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +24,20 @@ class MyApp extends StatelessWidget {
         return MultiBlocProvider(
           providers: [
             BlocProvider(
-              create: (context) => sl<BrandsBloc>()..add(GetBrandsEvent()),
+              create: (context) => sl<BrandsBloc>()
+                ..add(
+                  GetBrandsEvent(),
+                ),
             ),
             BlocProvider(
               create: (context) => sl<SearchResultBloc>(),
-            )
+            ),
+            BlocProvider(
+              create: (context) => sl<LatestDevicesBloc>()
+                ..add(
+                  GetLatestDevicesEvent(),
+                ),
+            ),
           ],
           child: MaterialApp(
             debugShowCheckedModeBanner: false,

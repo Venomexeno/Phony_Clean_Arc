@@ -114,7 +114,6 @@ class TopByInterestDevicesScreen extends StatelessWidget {
                                         .toString(),
                                     textAlign: TextAlign.center,
                                     style: TextStyle(
-                                      color: Colors.black54,
                                       fontSize: 14.sp,
                                       fontWeight: FontWeight.bold,
                                     ),

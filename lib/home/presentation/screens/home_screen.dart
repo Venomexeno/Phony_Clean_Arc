@@ -1,7 +1,8 @@
 import 'package:clean_arc_phony/core/utils/enums.dart';
 import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_screen.dart';
-import 'package:clean_arc_phony/home/presentation/components/brands_list.dart';
+import 'package:clean_arc_phony/home/presentation/components/brands_list_component.dart';
 import 'package:clean_arc_phony/core/utils/app_constance.dart';
+import 'package:clean_arc_phony/home/presentation/components/latest_devices_component.dart';
 import 'package:clean_arc_phony/home/presentation/controller/search_result_bloc.dart';
 import 'package:clean_arc_phony/top_by_fans_devices/presentation/screens/top_by_fans_devices_screen.dart';
 import 'package:clean_arc_phony/top_by_interest_devices/presentation/screens/top_by_interest_devices_screen.dart';
@@ -15,6 +16,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: Container(),
       appBar: AppBar(
         title: const Text(AppConstance.appName),
         centerTitle: true,
@@ -34,28 +36,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Container(
-            padding: EdgeInsets.symmetric(horizontal: 5.r),
-            width: double.infinity,
-            child: ElevatedButton(
-              onPressed: () {
-                showModalBottomSheet(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.vertical(
-                      top: Radius.circular(25.0.r),
-                    ),
-                  ),
-                  context: context,
-                  builder: (context) {
-                    return const BrandsList();
-                  },
-                );
-              },
-              child: const Text(AppConstance.brands),
-            ),
-          ),
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Expanded(
                 child: Padding(
@@ -71,6 +52,27 @@ class HomeScreen extends StatelessWidget {
                       );
                     },
                     child: const Text(AppConstance.topByFans),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 5.0.r),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      showModalBottomSheet(
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(25.0.r),
+                          ),
+                        ),
+                        context: context,
+                        builder: (context) {
+                          return const BrandsListComponent();
+                        },
+                      );
+                    },
+                    child: const Text(AppConstance.brands),
                   ),
                 ),
               ),
@@ -92,7 +94,8 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
             ],
-          )
+          ),
+          const LatestDevicesComponent(),
         ],
       ),
     );
