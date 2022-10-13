@@ -13,7 +13,8 @@ abstract class BaseTopByFansDevicesRemoteDataSource {
       TopByFansDeviceThumbnailParameter parameters);
 }
 
-class TopByFansDevicesRemoteDataSource extends BaseTopByFansDevicesRemoteDataSource {
+class TopByFansDevicesRemoteDataSource
+    extends BaseTopByFansDevicesRemoteDataSource {
   @override
   Future<List<TopByFansDevicesModel>> getTopByFansDevices() async {
     final response = await Dio().get(ApiConstance.topByFansDevicesPath);

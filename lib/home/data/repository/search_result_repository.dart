@@ -14,7 +14,8 @@ class SearchResultRepository extends BaseSearchResultRepository {
   @override
   Future<Either<Failure, List<SearchResult>>> getSearchResult(
       SearchResultParameter parameters) async {
-    final result = await baseSearchResultRemoteDataSource.getSearchResult(parameters);
+    final result =
+        await baseSearchResultRemoteDataSource.getSearchResult(parameters);
     try {
       return Right(result);
     } on ServerException catch (failure) {

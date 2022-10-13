@@ -15,7 +15,7 @@ class LatestDevices extends Equatable {
 
   @override
   List<Object> get props => [
-    deviceName,
+        deviceName,
         slug,
         image,
         detail,

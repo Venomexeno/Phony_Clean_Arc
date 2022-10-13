@@ -9,15 +9,16 @@ import 'package:dartz/dartz.dart';
 
 class TopByInterestDevicesRepository
     extends BaseTopByInterestDevicesRepository {
-  final BaseTopByInterestDevicesRemoteDataSource baseTopByInterestDevicesRemoteDataSource;
+  final BaseTopByInterestDevicesRemoteDataSource
+      baseTopByInterestDevicesRemoteDataSource;
 
   TopByInterestDevicesRepository(this.baseTopByInterestDevicesRemoteDataSource);
 
   @override
   Future<Either<Failure, List<TopByInterestDevices>>>
       getTopByInterestDevices() async {
-    final result =
-        await baseTopByInterestDevicesRemoteDataSource.getTopByInterestDevices();
+    final result = await baseTopByInterestDevicesRemoteDataSource
+        .getTopByInterestDevices();
 
     try {
       return Right(result);
@@ -27,7 +28,9 @@ class TopByInterestDevicesRepository
   }
 
   @override
-  Future<Either<Failure, TopByInterestDeviceThumbnail>> getTopByInterestDeviceThumbnail(TopByInterestDeviceThumbnailParameter parameters) async {
+  Future<Either<Failure, TopByInterestDeviceThumbnail>>
+      getTopByInterestDeviceThumbnail(
+          TopByInterestDeviceThumbnailParameter parameters) async {
     final result = await baseTopByInterestDevicesRemoteDataSource
         .getTopByInterestDeviceThumbnail(parameters);
     try {
@@ -36,5 +39,4 @@ class TopByInterestDevicesRepository
       return Left(ServerFailure(failure.errorMessageModel.errorMessage));
     }
   }
-
 }

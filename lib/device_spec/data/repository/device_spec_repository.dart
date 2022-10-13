@@ -14,7 +14,8 @@ class DeviceSpecRepository extends BaseDeviceSpecRepository {
   @override
   Future<Either<Failure, DeviceSpec>> getDeviceSpec(
       DeviceSpecParameters parameters) async {
-    final result = await baseDeviceSpecRemoteDataSource.getDeviceSpec(parameters);
+    final result =
+        await baseDeviceSpecRemoteDataSource.getDeviceSpec(parameters);
 
     try {
       return Right(result);

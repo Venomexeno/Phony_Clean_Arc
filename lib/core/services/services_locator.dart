@@ -58,7 +58,8 @@ class ServicesLocator {
     sl.registerLazySingleton(() => GetTopByFansDevicesUseCase(sl()));
     sl.registerLazySingleton(() => GetTopByFansDeviceThumbnailUseCase(sl()));
     sl.registerLazySingleton(() => GetTopByInterestDevicesUseCase(sl()));
-    sl.registerLazySingleton(() => GetTopByInterestDeviceThumbnailUseCase(sl()));
+    sl.registerLazySingleton(
+        () => GetTopByInterestDeviceThumbnailUseCase(sl()));
     sl.registerLazySingleton(() => GetDeviceSpecUseCase(sl()));
 
     /// Repository
@@ -78,7 +79,8 @@ class ServicesLocator {
         () => DeviceSpecRepository(sl()));
 
     /// DataSource
-    sl.registerLazySingleton<BaseBrandsRemoteDataSource>(() => BrandsRemoteDataSource());
+    sl.registerLazySingleton<BaseBrandsRemoteDataSource>(
+        () => BrandsRemoteDataSource());
     sl.registerLazySingleton<BaseBrandDevicesRemoteDataSource>(
         () => BrandDevicesRemoteDataSource());
     sl.registerLazySingleton<BaseSearchResultRemoteDataSource>(

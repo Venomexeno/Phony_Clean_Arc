@@ -5,7 +5,8 @@ import 'package:clean_arc_phony/device_spec/domain/repository/base_device_spec_r
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
-class GetDeviceSpecUseCase extends BaseUseCase<DeviceSpec, DeviceSpecParameters> {
+class GetDeviceSpecUseCase
+    extends BaseUseCase<DeviceSpec, DeviceSpecParameters> {
   final BaseDeviceSpecRepository baseDeviceSpecRepository;
 
   GetDeviceSpecUseCase(this.baseDeviceSpecRepository);

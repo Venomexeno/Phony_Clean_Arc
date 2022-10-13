@@ -14,7 +14,8 @@ part 'latest_devices_state.dart';
 class LatestDevicesBloc extends Bloc<LatestDevicesEvent, LatestDevicesState> {
   final GetLatestDevicesUseCase getLatestDevicesUseCase;
 
-  LatestDevicesBloc(this.getLatestDevicesUseCase) : super(const LatestDevicesState()) {
+  LatestDevicesBloc(this.getLatestDevicesUseCase)
+      : super(const LatestDevicesState()) {
     on<GetLatestDevicesEvent>(_getLatestDevices);
   }
 

@@ -9,7 +9,8 @@ class GetTopByInterestDeviceThumbnailUseCase extends BaseUseCase<
     TopByInterestDeviceThumbnail, TopByInterestDeviceThumbnailParameter> {
   final BaseTopByInterestDevicesRepository baseTopByInterestDevicesRepository;
 
-  GetTopByInterestDeviceThumbnailUseCase(this.baseTopByInterestDevicesRepository);
+  GetTopByInterestDeviceThumbnailUseCase(
+      this.baseTopByInterestDevicesRepository);
 
   @override
   Future<Either<Failure, TopByInterestDeviceThumbnail>> call(

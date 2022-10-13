@@ -7,6 +7,6 @@ import 'package:dartz/dartz.dart';
 abstract class BaseTopByFansDevicesRepository {
   Future<Either<Failure, List<TopByFansDevices>>> getTopByFansDevices();
 
-  Future<Either<Failure, TopByFansDeviceThumbnail>>
-      getTopByFansDeviceThumbnail(TopByFansDeviceThumbnailParameter parameters);
+  Future<Either<Failure, TopByFansDeviceThumbnail>> getTopByFansDeviceThumbnail(
+      TopByFansDeviceThumbnailParameter parameters);
 }

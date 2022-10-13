@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_arc_phony/brand_devices/presentation/controller/brand_devices_bloc.dart';
 import 'package:clean_arc_phony/core/services/services_locator.dart';
 import 'package:clean_arc_phony/core/utils/enums.dart';
@@ -66,8 +67,15 @@ class BrandDevicesScreen extends StatelessWidget {
                                       borderRadius:
                                           BorderRadius.circular(10.r)),
                                   padding: EdgeInsets.symmetric(vertical: 5.h),
-                                  child: Image.network(
-                                      state.brandDevices[index].image),
+                                  child: CachedNetworkImage(
+                                      errorWidget: (context, url, error) =>
+                                          const Icon(Icons.error),
+                                      placeholder: (context, url) =>
+                                          const Center(
+                                              child:
+                                                  CircularProgressIndicator()),
+                                      imageUrl:
+                                          state.brandDevices[index].image),
                                 ),
                               ),
                             ),

@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_arc_phony/core/utils/enums.dart';
 import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_screen.dart';
 import 'package:clean_arc_phony/home/presentation/controller/latest_devices_bloc.dart';
@@ -14,8 +15,10 @@ class LatestDevicesComponent extends StatelessWidget {
       builder: (context, state) {
         switch (state.requestState) {
           case RequestState.loading:
-            return const Center(
-              child: CircularProgressIndicator(),
+            return const Expanded(
+              child: Center(
+                child: CircularProgressIndicator(),
+              ),
             );
           case RequestState.loaded:
             return Expanded(
@@ -50,8 +53,12 @@ class LatestDevicesComponent extends StatelessWidget {
                       child: Column(
                         children: [
                           Expanded(
-                            child:
-                                Image.network(state.latestDevices[index].image),
+                            child: CachedNetworkImage(
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                                placeholder: (context, url) => const Center(
+                                    child: CircularProgressIndicator()),
+                                imageUrl: state.latestDevices[index].image),
                           ),
                           SizedBox(height: 10.h),
                           Padding(

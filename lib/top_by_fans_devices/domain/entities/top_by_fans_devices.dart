@@ -15,7 +15,7 @@ class TopByFansDevices extends Equatable {
 
   @override
   List<Object> get props => [
-    deviceName,
+        deviceName,
         slug,
         favorites,
         detail,

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class DeviceSpecScreen extends StatelessWidget {
   final String slug;
@@ -69,8 +70,14 @@ class DeviceSpecScreen extends StatelessWidget {
                               child: Padding(
                                 padding: EdgeInsets.only(top: 8.0.h),
                                 child: Expanded(
-                                  child: Image.network(
-                                      state.deviceSpec!.deviceImages[index]),
+                                  child: CachedNetworkImage(
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    imageUrl:
+                                        state.deviceSpec!.deviceImages[index],
+                                  ),
                                 ),
                               ),
                             );

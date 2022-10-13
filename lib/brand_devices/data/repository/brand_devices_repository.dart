@@ -14,7 +14,8 @@ class BrandDevicesRepository extends BaseBrandDevicesRepository {
   @override
   Future<Either<Failure, List<BrandDevices>>> getBrandDevices(
       BrandDevicesParameter parameters) async {
-    final result = await baseBrandDevicesRemoteDataSource.getBrandDevices(parameters);
+    final result =
+        await baseBrandDevicesRemoteDataSource.getBrandDevices(parameters);
     try {
       return Right(result);
     } on ServerException catch (failure) {

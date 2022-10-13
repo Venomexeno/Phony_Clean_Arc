@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_arc_phony/core/utils/enums.dart';
 import 'package:clean_arc_phony/device_spec/presentation/screens/device_spec_screen.dart';
 import 'package:clean_arc_phony/home/presentation/components/brands_list_component.dart';
@@ -40,7 +41,7 @@ class HomeScreen extends StatelessWidget {
             children: [
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.r),
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -57,7 +58,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.0.r),
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
                   child: ElevatedButton(
                     onPressed: () {
                       showModalBottomSheet(
@@ -78,7 +79,7 @@ class HomeScreen extends StatelessWidget {
               ),
               Expanded(
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 5.r),
+                  padding: EdgeInsets.symmetric(horizontal: 4.w),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(
@@ -95,7 +96,27 @@ class HomeScreen extends StatelessWidget {
               ),
             ],
           ),
-          const LatestDevicesComponent(),
+          Expanded(
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.blue,
+                borderRadius: BorderRadius.circular(10.r),
+              ),
+              margin: EdgeInsets.symmetric(horizontal: 5.w),
+              child: Column(
+                children: [
+                  Text(
+                    AppConstance.latestDevices,
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      color: Colors.white,
+                    ),
+                  ),
+                  const LatestDevicesComponent(),
+                ],
+              ),
+            ),
+          )
         ],
       ),
     );
@@ -187,8 +208,12 @@ class DeviceSearch extends SearchDelegate {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(10.r)),
                                 padding: EdgeInsets.symmetric(vertical: 5.h),
-                                child: Image.network(
-                                    state.searchResult[index].image),
+                                child: CachedNetworkImage(
+                                    errorWidget: (context, url, error) =>
+                                        const Icon(Icons.error),
+                                    placeholder: (context, url) => const Center(
+                                        child: CircularProgressIndicator()),
+                                    imageUrl: state.searchResult[index].image),
                               ),
                             ),
                           ),

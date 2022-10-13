@@ -13,7 +13,7 @@ class GetSearchResultUseCase
 
   @override
   Future<Either<Failure, List<SearchResult>>> call(
-      SearchResultParameter parameters) async{
+      SearchResultParameter parameters) async {
     return await baseSearchResultRepository.getSearchResult(parameters);
   }
 }

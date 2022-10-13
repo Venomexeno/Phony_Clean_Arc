@@ -12,7 +12,8 @@ class GetLatestDevicesUseCase
   GetLatestDevicesUseCase(this.baseLatestDevicesRepository);
 
   @override
-  Future<Either<Failure, List<LatestDevices>>> call(NoParameters parameters) async{
+  Future<Either<Failure, List<LatestDevices>>> call(
+      NoParameters parameters) async {
     return await baseLatestDevicesRepository.getLatestDevices();
   }
 }
