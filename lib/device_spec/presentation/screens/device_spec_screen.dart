@@ -58,44 +58,37 @@ class DeviceSpecScreen extends StatelessWidget {
                           state.timer.cancel();
                         }
                       },
-                      child: Container(
-                        margin: const EdgeInsets.only(bottom: 8.0),
-                        height: MediaQuery.of(context).size.height * 0.4,
+                      child: SizedBox(
+                        height: 200.h,
                         child: PageView.builder(
                           controller: state.controller,
                           itemCount: state.deviceSpec!.deviceImages.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return ClipRRect(
-                              borderRadius: BorderRadius.circular(20.r),
-                              child: Padding(
-                                padding: EdgeInsets.only(top: 8.0.h),
-                                child: Expanded(
-                                  child: CachedNetworkImage(
-                                    errorWidget: (context, url, error) =>
-                                        const Icon(Icons.error),
-                                    placeholder: (context, url) => const Center(
-                                        child: CircularProgressIndicator()),
-                                    imageUrl:
-                                        state.deviceSpec!.deviceImages[index],
-                                  ),
-                                ),
-                              ),
+                            return CachedNetworkImage(
+                              errorWidget: (context, url, error) =>
+                                  const Icon(Icons.error),
+                              placeholder: (context, url) => const Center(
+                                  child: CircularProgressIndicator()),
+                              imageUrl: state.deviceSpec!.deviceImages[index],
                             );
                           },
                         ),
                       ),
                     ),
-                    SmoothPageIndicator(
-                      controller: state.controller,
-                      count: state.deviceSpec!.deviceImages.length,
-                      effect: const WormEffect(
-                        dotHeight: 10,
-                        dotWidth: 10,
-                      ),
-                      onDotClicked: (index) => state.controller.animateToPage(
-                        index,
-                        duration: const Duration(milliseconds: 400),
-                        curve: Curves.easeInOut,
+                    Padding(
+                      padding: EdgeInsets.only(top: 5.0.h),
+                      child: SmoothPageIndicator(
+                        controller: state.controller,
+                        count: state.deviceSpec!.deviceImages.length,
+                        effect: const WormEffect(
+                          dotHeight: 10,
+                          dotWidth: 10,
+                        ),
+                        onDotClicked: (index) => state.controller.animateToPage(
+                          index,
+                          duration: const Duration(milliseconds: 400),
+                          curve: Curves.easeInOut,
+                        ),
                       ),
                     ),
                     Expanded(

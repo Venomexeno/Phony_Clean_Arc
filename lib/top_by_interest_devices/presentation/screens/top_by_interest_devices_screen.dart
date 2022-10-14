@@ -55,7 +55,7 @@ class TopByInterestDevicesScreen extends StatelessWidget {
                         padding: EdgeInsets.all(5.r),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.r),
-                          color: Colors.grey.shade600,
+                          color: Colors.white,
                         ),
                         child: Column(
                           children: [
