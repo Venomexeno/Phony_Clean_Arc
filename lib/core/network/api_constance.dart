@@ -1,5 +1,5 @@
 class ApiConstance {
-  static const baseUrl = "https://phone-specs-api.azharimm.dev/v2";
+  static const baseUrl = "https://phone-specs-api-azharimm.vercel.app";
 
   static const latestDevicesPath = "$baseUrl/latest/";
   static const brandsPath = "$baseUrl/brands/";
