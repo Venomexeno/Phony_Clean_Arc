@@ -1,4 +1,4 @@
-# clean_arc_phony
+# phony
 
 A new Flutter project.
 
